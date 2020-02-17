@@ -12,35 +12,7 @@ namespace RestStub.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { "\"{"
-                                  +  "\"EsetNumber\": \"1\","
-                                  +  "\"OrderNumber\": null,"
-                                  +  "\"OrganizationCode\": \"HEL\","
-                                  +  "\"JobNumber\": \"J16997582\","
-                                  +  "\"SerialNumber\": \"SJ419030011WA\","
-                                  +  "\"MACAddress\": null,"
-                                  +  "\"SoftwareExtension\": null,"
-                                  +  "\"OperatorName\": \"eDelivery\","
-                                  +  "\"ClientName\": \"eDelivery\","
-                                  +  "\"ClientType\": \"eDelivery\","
-                                  +  "\"OrderType\": null,"
-                                  +  "\"TransactionType\": \"Upgrade\","
-                                  +  "\"ForkliftSerialNumber\": null,"
-                                  +  "\"ReportTypes\": \"xml\","
-                                  +  "\"Reports\": {\"Report\": [   {"
-                                  +  "    \"FileExtensionName\": \"xml\","
-                                  +  "    \"FileName\": \"SJ419030011WA_OAC.xml\","
-                                  +  "    \"FileContent\": \"********\","
-                                  +  "}]},"
-                                  +  "\"ErrorDetails\":    {"
-                                  +  "    \"ErrorCode\": null,"
-                                  +  "    \"ErrorMessage\": null"
-                                  +  "},"
-                                  +  "\"ResponseDetails\":    {"
-                                  +  "    \"ResponseCode\": 200,"
-                                  +  "    \"ResponseMessage\": \"Success\""
-                                  +  "}"
-                                  +  "}\""
+            return new string[] { "N/A"
             };
         }
 

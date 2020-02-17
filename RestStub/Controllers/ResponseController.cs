@@ -1,9 +1,8 @@
-﻿using RestStub.Models;
+﻿using Newtonsoft.Json;
+using RestStub.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.Text;
 using System.Web.Http;
 
 namespace RestStub.Controllers
@@ -11,19 +10,12 @@ namespace RestStub.Controllers
     public class ResponseController : ApiController
     {
         // GET: api/Response
-        public IEnumerable<ResponseInfo> Get()
+        public TokenResponse Get()
         {
-            var newb = new List<ResponseInfo>();
-            for (int i = 0; i < 5; ++i)
-            {
-                var responseInfo = new ResponseInfo
-                {
-                    Data = $"Some data: {i} \n"
-                };
-                newb.Add(responseInfo);
-            }
-            return newb;
-
+            var token = new TokenResponse();
+            var respond = JsonConvert.SerializeObject(token);
+            var rslt = JsonConvert.DeserializeObject<TokenResponse>(respond);
+            return rslt;
         }
 
         // GET: api/Response/5
@@ -33,8 +25,22 @@ namespace RestStub.Controllers
         }
 
         // POST: api/Response
-        public void Post([FromBody]string value)
+        public object Post([FromUri]string value)
         {
+            var headers = Request.Headers;
+            if (value != null && value.ToLower() == "token")
+            {
+                var token = new TokenResponse();
+                var trespond = JsonConvert.SerializeObject(token);
+                var trslt = JsonConvert.DeserializeObject<TokenResponse>(trespond);
+                return trslt;
+            }
+            var res = new OACResponse();
+            
+            var respond = JsonConvert.SerializeObject(res);
+            var rslt = JsonConvert.DeserializeObject<OACResponse>(respond);
+            return rslt;
+            //return "Response controller response message";
         }
 
         // PUT: api/Response/5
@@ -48,3 +54,46 @@ namespace RestStub.Controllers
         }
     }
 }
+
+/*
+             var responseInfo = new OACResponse
+            {
+                EsetNumber = 1,
+                OrderNumber = "null",
+                OrganizationCode = "HEL",
+                JobNumber = "J16997582",
+                SerialNumber = "SJ419030011WA",
+                MACAddress = "null",
+                SoftwareExtension = "null",
+                OperatorName = "eDelivery",
+                ClientName = "eDelivery",
+                ClientType = "eDelivery",
+                OrderType = "null",
+                TransactionType = "Upgrade",
+                ForkliftSerialNumber = "null",
+                ReportTypes = "xml",
+                Reports = new Rreports
+                {
+                    Report = new List<Rreport>
+                    {
+                        new Rreport
+                        {
+                            FileExtensionName = "xml",
+                            FileName = "SJ419030011WA_OAC.xml",
+                            FileContent = "******"
+                        }
+                    }
+                },
+                ErrorDetails = new RerrorDetails
+                {
+                    ErrorCode = "null",
+                    ErrorMessage = "null"
+                },
+                ResponseDetails = new RresponseDetails
+                {
+                    ResponseCode = 200,
+                    ResponseMessage = "Success"
+                }
+            };
+     
+     */
